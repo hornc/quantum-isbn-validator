@@ -54,6 +54,15 @@ Counts: {'0': 98, '1': 202}
 9781492039684 does not validate!
 ```
 
+## Original circuit
+Below is the original version of my validation algorithm attempt, which uses 3 qubits and a swap check to determine whether the weighted sum modulo _n_ is equal to the phase encoded checkdigit (negative rotation).
+The circuit is a bit more interesting and gives the same result, but after creating it and seeing how it worked, I realised it was uneccesarily complex and could be simplified to use
+only one qubit for the same functionality.
+
+Here is that earlier circuit drawn using [QCEngine](https://oreilly-qc.github.io/docs/build/index.html):
+
+![Earlier 3 qubit version of an ISBN validation circuit](img/original-qISBN-circuit.png)
+
 
 ## License
 This project is licensed under the terms of the [MIT license](LICENSE.txt).
