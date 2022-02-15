@@ -75,4 +75,3 @@ if __name__ == '__main__':
     isbn = sys.argv[1]
     print(f'Validating ISBN {isbn}...')
     validate(isbn, show_circuit=True)
-
