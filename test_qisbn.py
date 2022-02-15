@@ -28,4 +28,4 @@ class Test_InvalidInput:
         assert not validate('arbitrary_string')
 
     def test_null_input(self):
-        assert not validate('self')
+        assert not validate('')
