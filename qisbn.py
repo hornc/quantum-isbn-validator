@@ -17,7 +17,7 @@ from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute, 
 SHOTS = 300
 
 
-def validate(isbn):
+def validate(isbn, show_circuit=False):
     orig = isbn
     # strip spaces, dashes, and convert X character into hex A
     isbn = isbn.upper().replace('-', '').replace(' ', '').replace('X', 'A')
@@ -52,22 +52,27 @@ def validate(isbn):
     result = job.result()
     counts = result.get_counts(qc)
 
+    valid = counts.get('1') == SHOTS
+
     # Display results:
     print(f'Shots: {SHOTS}')
     print(f'Counts: {counts}')
-    if counts.get('1') == SHOTS:
+    if valid:
         print(f'ISBN {orig} validates!')
     else:
         print(f'{orig} does not validate!')
     if counts.get('0') == SHOTS:
         print(f'Possibly not a valid ISBN format: {orig}. An ISBN must be 10 digits from [0-9Xx] OR 13 digits from [0-9], (optionally separated with dashes or spaces).')
 
-    qc.draw(output='mpl')
-    plt.show()
+    if show_circuit:
+        qc.draw(output='mpl')
+        plt.show()
+
+    return valid
 
 
 if __name__ == '__main__':
     isbn = sys.argv[1]
     print(f'Validating ISBN {isbn}...')
-    validate(isbn)
+    validate(isbn, show_circuit=True)
 
