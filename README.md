@@ -1,5 +1,8 @@
 # Quantum ISBN validator
-Copyright (c) 2022 Charles Horn. 
+
+![tests](https://github.com/hornc/quantum-isbn-validator/actions/workflows/tests.yml/badge.svg)
+
+Copyright © 2022 Charles Horn.
 
 Implements a quantum algorithm to validate ISBN check digits using a single qubit.
 
