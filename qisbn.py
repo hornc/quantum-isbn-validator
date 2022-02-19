@@ -47,7 +47,7 @@ def validate(isbn, show_circuit=False):
     qc.measure(input_, output_c)
 
     # Run / simulate the circuit SHOTS times:
-    backend = Aer.get_backend('qasm_simulator')
+    backend = Aer.get_backend('aer_simulator')
     job = execute(qc, backend, shots=SHOTS)
     result = job.result()
     counts = result.get_counts(qc)
